@@ -28,12 +28,12 @@ export const Navbar: FC = () => {
     const observerOptions = {
       root: null,
       rootMargin: "-20% 0px -60% 0px",
-      threshold: 0,
+      threshold: [0, 0.25, 0.5, 0.75, 1],
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
           setActiveTab(entry.target.id);
         }
       });
@@ -69,6 +69,7 @@ export const Navbar: FC = () => {
             key={item.id}
             href={item.href}
             ref={(el) => { navRefs.current[item.id] = el; }}
+            onClick={() => setActiveTab(item.id)}
             className={`text-sm md:text-base font-bold font-headline uppercase tracking-widest transition-all duration-300 relative z-10 py-2 ${
               activeTab === item.id ? "text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" : "text-fuchsia-500/80 hover:text-fuchsia-400"
             }`}
@@ -101,12 +102,13 @@ export const Navbar: FC = () => {
           className="group flex-shrink-0"
         >
           <img 
-            src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/favicon.ico" 
+            src={`${baseUrl}sponsors/unstop.png`} 
             alt="Unstop" 
-            className="w-8 h-8 md:w-10 md:h-10 border border-white/20 p-1.5 bg-white group-hover:bg-cyan-500/10 group-hover:border-cyan-400 transition-all rounded-full filter drop-shadow-[0_0_5px_rgba(34,211,238,0.4)]"
+            className="w-10 h-10 md:w-14 md:h-10 object-contain border border-white/20 p-1.5 bg-white group-hover:bg-cyan-500/10 group-hover:border-cyan-400 transition-all rounded-sm filter drop-shadow-[0_0_5px_rgba(34,211,238,0.4)]"
           />
         </a>
       </div>
     </header>
   );
 };
+

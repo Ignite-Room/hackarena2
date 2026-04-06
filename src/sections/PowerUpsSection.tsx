@@ -1,12 +1,14 @@
 import type { FC } from "react";
 
 export const PowerUpsSection: FC = () => {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <section className="py-24 bg-surface-container-low relative overflow-hidden">
       {/* Mystery Boxes Scattered */}
-      <img alt="Mystery Box 1" className="absolute top-10 left-10 w-16 opacity-30 animate-pulse pointer-events-none" src="/images/Super_Mystery_Box 1.png" />
-      <img alt="Spray Can" className="absolute bottom-10 right-20 w-24 opacity-40 animate-floating pointer-events-none" src="/images/Jakespraycan.png" />
-      <img alt="Coin" className="absolute top-1/2 right-10 w-16 opacity-20 rotate-12 pointer-events-none" src="/images/e9dd8201-a51a-4523-ad0f-43b4f3ec8e95.png" />
+      <img alt="Mystery Box 1" className="absolute top-10 left-10 w-16 opacity-30 animate-pulse pointer-events-none" src={`${baseUrl}images/Super_Mystery_Box 1.png`} />
+      <img alt="Spray Can" className="absolute bottom-10 right-20 w-24 opacity-40 animate-floating pointer-events-none" src={`${baseUrl}images/Jakespraycan.png`} />
+      <img alt="Coin" className="absolute top-1/2 right-10 w-16 opacity-20 rotate-12 pointer-events-none" src={`${baseUrl}images/e9dd8201-a51a-4523-ad0f-43b4f3ec8e95.png`} />
       
       <div className="container mx-auto px-6 text-center mb-16 relative z-10">
         <h2 className="font-headline font-black text-4xl text-white uppercase italic tracking-tighter">THE POWER-UP STACK</h2>
