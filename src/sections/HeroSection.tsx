@@ -1,13 +1,15 @@
 import type { FC } from "react";
 
 export const HeroSection: FC = () => {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 overflow-hidden" id="arena">
       <div className="absolute inset-0 z-0">
         <img
           className="w-full h-full object-cover opacity-60 mix-blend-lighten filter brightness-50"
           alt="Graffiti-covered wall in a dark urban setting, cyberpunk aesthetic"
-          src="/images/bg_gg.png"
+          src={`${baseUrl}images/bg_gg.png`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background"></div>
       </div>
@@ -16,7 +18,7 @@ export const HeroSection: FC = () => {
         <img
           alt="Jake on Hoverboard"
           className="w-full drop-shadow-[0_0_50px_rgba(255,159,74,0.4)]"
-          src="/images/Tricky1 1.png"
+          src={`${baseUrl}images/Tricky1 1.png`}
         />
       </div>
       <div className="relative z-10 text-center px-4 max-w-5xl">
@@ -24,7 +26,7 @@ export const HeroSection: FC = () => {
         <img
           alt="HACKARENA 2.0"
           className="w-full max-w-4xl mx-auto drop-shadow-[0_0_30px_rgba(255,159,74,0.5)] mb-6"
-          src="/images/Heading 1.png"
+          src={`${baseUrl}images/Heading 1.png`}
         />
         <p className="font-headline font-bold text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto mt-6 italic">
           The world’s fastest underground hackathon series. 48 hours. One arena.

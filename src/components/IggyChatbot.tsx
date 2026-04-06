@@ -59,6 +59,7 @@ export const IggyChatbot: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const baseUrl = import.meta.env.BASE_URL;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -120,7 +121,7 @@ export const IggyChatbot: FC = () => {
         {isOpen ? (
           <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         ) : (
-          <img src="/images/6110f78c98c92.png" alt="Iggy" className="w-12 h-12 rounded-full object-cover" />
+          <img src={`${baseUrl}images/6110f78c98c92.png`} alt="Iggy" className="w-12 h-12 rounded-full object-cover" />
         )}
         {/* Pulse ring */}
         {!isOpen && (
@@ -137,7 +138,7 @@ export const IggyChatbot: FC = () => {
           {/* Header */}
           <div className="bg-gradient-to-r from-fuchsia-900/90 to-fuchsia-800/90 px-5 py-4 flex items-center gap-3 border-b border-fuchsia-500/30">
             <div className="relative">
-              <img src="/images/6110f78c98c92.png" alt="Iggy" className="w-10 h-10 rounded-full object-cover border-2 border-fuchsia-400" />
+              <img src={`${baseUrl}images/6110f78c98c92.png`} alt="Iggy" className="w-10 h-10 rounded-full object-cover border-2 border-fuchsia-400" />
               <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 rounded-full border-2 border-fuchsia-900" />
             </div>
             <div className="flex-1">

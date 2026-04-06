@@ -2,6 +2,8 @@ import type { FC } from "react";
 import { FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 export const Footer: FC = () => {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <footer className="w-full px-8 py-16 bg-black dark:bg-zinc-950 border-t-4 border-double border-cyan-900 shadow-[0_-10px_30px_rgba(0,255,255,0.1)] text-zinc-600">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
@@ -19,7 +21,7 @@ export const Footer: FC = () => {
             <img 
               alt="IgniteRoom" 
               className="h-8 object-contain self-start mt-2 opacity-70 hover:opacity-100 transition-opacity"
-              src="/logo.png" 
+              src={`${baseUrl}logo.png`} 
             />
           </a>
         </div>
@@ -27,22 +29,22 @@ export const Footer: FC = () => {
         {/* Links Column */}
         <div className="flex flex-col gap-4">
           <h4 className="font-headline font-bold text-sm text-zinc-400 uppercase tracking-widest mb-2">Navigation</h4>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/#arena">Home</a>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/#stations">Stations</a>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/#leaderboard">Leaderboard</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}#arena`}>Home</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}#stations`}>Stations</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}#leaderboard`}>Leaderboard</a>
           <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="https://unstop.com/college-fests/hackarena-20-indraprastha-institute-of-information-technology-iiit-delhi-446261" target="_blank" rel="noopener noreferrer">Register</a>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/#ambassador">Ambassador</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}#ambassador`}>Ambassador</a>
         </div>
 
         {/* Legal Column */}
         <div className="flex flex-col gap-4">
           <h4 className="font-headline font-bold text-sm text-zinc-400 uppercase tracking-widest mb-2">Legal</h4>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/privacy">Privacy Policy</a>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/terms">Terms of Service</a>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/code-of-conduct">Code of Conduct</a>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/disclaimer">Disclaimer</a>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/accessibility">Accessibility</a>
-          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href="/cookies">Cookie Policy</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}privacy`}>Privacy Policy</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}terms`}>Terms of Service</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}code-of-conduct`}>Code of Conduct</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}disclaimer`}>Disclaimer</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}accessibility`}>Accessibility</a>
+          <a className="font-mono text-xs uppercase tracking-widest hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" href={`${baseUrl}cookies`}>Cookie Policy</a>
         </div>
 
         {/* Contact Column */}
@@ -85,9 +87,9 @@ export const Footer: FC = () => {
       <div className="container mx-auto pt-8 border-t border-zinc-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-600">© 2025 HACKARENA 2.0 × IGNITEROOM // ALL RIGHTS RESERVED</p>
         <div className="flex gap-6 text-zinc-600">
-          <a href="/privacy" className="font-mono text-[10px] uppercase tracking-widest hover:text-cyan-400 transition-colors">Privacy</a>
-          <a href="/terms" className="font-mono text-[10px] uppercase tracking-widest hover:text-cyan-400 transition-colors">Terms</a>
-          <a href="/code-of-conduct" className="font-mono text-[10px] uppercase tracking-widest hover:text-cyan-400 transition-colors">Conduct</a>
+          <a href={`${baseUrl}privacy`} className="font-mono text-[10px] uppercase tracking-widest hover:text-cyan-400 transition-colors">Privacy</a>
+          <a href={`${baseUrl}terms`} className="font-mono text-[10px] uppercase tracking-widest hover:text-cyan-400 transition-colors">Terms</a>
+          <a href={`${baseUrl}code-of-conduct`} className="font-mono text-[10px] uppercase tracking-widest hover:text-cyan-400 transition-colors">Conduct</a>
         </div>
       </div>
     </footer>

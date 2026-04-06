@@ -1,6 +1,8 @@
 import type { FC } from "react";
 
 export const AmbassadorSection: FC = () => {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <section className="py-24 bg-surface-container-low transition-colors group">
       <div className="container mx-auto px-6">
@@ -10,7 +12,7 @@ export const AmbassadorSection: FC = () => {
             <img
               className="w-full h-full object-cover opacity-10"
               alt="Cybernetic background"
-              src="/images/static-assets-upload17131968561535003824.webp"
+              src={`${baseUrl}images/static-assets-upload17131968561535003824.webp`}
             />
           </div>
 
@@ -59,7 +61,7 @@ export const AmbassadorSection: FC = () => {
               <img
                 alt="Ambassador Avatar"
                 className="w-full drop-shadow-[0_0_30px_rgba(232,121,249,0.4)] animate-floating"
-                src="/images/32.png"
+                src={`${baseUrl}images/32.png`}
               />
             </div>
           </div>

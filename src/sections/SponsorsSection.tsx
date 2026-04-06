@@ -1,16 +1,18 @@
 import type { FC } from "react";
 
-const sponsorsList = [
-  { name: "Daytona", src: "/sponsors/Daytona.png" },
-  { name: "Master's Union", src: "/sponsors/MastersUnion.png" },
-  { name: "v0 by Vercel", src: "/sponsors/V0%20by%20Vercel.webp" },
-  { name: "Para AI", src: "/sponsors/get_para_ai.jpeg" },
-  { name: "GitHub", src: "/sponsors/github.png" },
-  { name: "Mozilla AI", src: "/sponsors/mozilla_ai.jpeg" },
-  { name: "Trae AI", src: "/sponsors/trae_ai.png" },
-];
-
 export const SponsorsSection: FC = () => {
+  const baseUrl = import.meta.env.BASE_URL;
+
+  const sponsorsList = [
+    { name: "Daytona", src: `${baseUrl}sponsors/Daytona.png` },
+    { name: "Master's Union", src: `${baseUrl}sponsors/MastersUnion.png` },
+    { name: "v0 by Vercel", src: `${baseUrl}sponsors/V0%20by%20Vercel.webp` },
+    { name: "Para AI", src: `${baseUrl}sponsors/get_para_ai.jpeg` },
+    { name: "GitHub", src: `${baseUrl}sponsors/github.png` },
+    { name: "Mozilla AI", src: `${baseUrl}sponsors/mozilla_ai.jpeg` },
+    { name: "Trae AI", src: `${baseUrl}sponsors/trae_ai.png` },
+  ];
+
   return (
     <section className="py-32 bg-black border-y border-outline-variant/20 relative overflow-hidden">
       {/* Background aesthetics */}
