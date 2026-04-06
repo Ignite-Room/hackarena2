@@ -63,7 +63,7 @@ const HomePage = () => (
 
 function App() {
   return (
-    <BrowserRouter basename="/hackarena">
+    <BrowserRouter basename="/hackarena2.0">
       <Suspense fallback={<SectionLoader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />

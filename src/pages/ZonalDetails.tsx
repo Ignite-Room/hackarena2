@@ -75,6 +75,7 @@ const ZONAL_DATA: Record<string, ZonalInfo> = {
 export const ZonalDetails: FC = () => {
   const { cityId } = useParams<{ cityId: string }>();
   const [data, setData] = useState<ZonalInfo | null>(null);
+  const baseUrl = import.meta.env.BASE_URL;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -96,16 +97,21 @@ export const ZonalDetails: FC = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       </div>
 
+      {/* Subway Surfer Character - Left */}
+      <img src={`${baseUrl}images/Fresh1 1.png`} alt="Fresh" className="fixed -left-10 bottom-0 h-[400px] opacity-10 md:opacity-20 pointer-events-none z-0 object-contain hidden lg:block animate-floating" />
+      {/* Subway Surfer Character - Right */}
+      <img src={`${baseUrl}images/Tricky1 1.png`} alt="Tricky" className="fixed -right-10 top-20 h-[350px] opacity-10 md:opacity-20 pointer-events-none z-0 object-contain hidden lg:block animate-pulse" />
+
       <header className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b-2 border-fuchsia-500/30 px-6 py-4">
         <div className="container mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src="/logo.png" alt="Ignite Room" className="h-10 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" />
+            <img src={`${baseUrl}logo.png`} alt="Ignite Room" className="h-10 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" />
             <span className="font-headline font-bold text-fuchsia-500 text-lg uppercase tracking-tighter italic group-hover:text-fuchsia-400 transition-colors hidden sm:block">
               HackArena 2.0
             </span>
           </Link>
           <Link
-            to="/#stations"
+            to="/"
             className="text-sm font-mono text-cyan-400 uppercase tracking-widest hover:text-cyan-300 transition-colors flex items-center gap-2"
           >
             <span className="material-symbols-outlined text-[16px]">arrow_back_ios</span>
@@ -117,7 +123,7 @@ export const ZonalDetails: FC = () => {
       <main className="container mx-auto px-6 pt-32 pb-24 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Header Card */}
-          <div className="bg-surface-container- lowest border border-fuchsia-500/30 rounded-lg p-8 md:p-12 mb-10 relative overflow-hidden shadow-[0_0_40px_rgba(217,70,239,0.1)]">
+          <div className="bg-surface-container-lowest border border-fuchsia-500/30 rounded-lg p-8 md:p-12 mb-10 relative overflow-hidden shadow-[0_0_40px_rgba(217,70,239,0.1)]">
             <div className="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/20 blur-[50px] rounded-full pointer-events-none"></div>
             
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 relative z-10">
@@ -153,7 +159,7 @@ export const ZonalDetails: FC = () => {
             {/* Left Col - Overview & Details */}
             <div className="lg:col-span-2 space-y-10">
               <section className="space-y-4">
-                <h2 className="font-headline font-bold text-2xl text-white uppercase tracking-wider flex items-center gap-3">
+                <h2 className="font-headline font-bold text-2xl text-white uppercase tracking-wider flex items-center gap-3 border-l-4 border-fuchsia-600 pl-4">
                   <span className="text-fuchsia-500 material-symbols-outlined">description</span>
                   Mission Brief
                 </h2>
@@ -163,14 +169,14 @@ export const ZonalDetails: FC = () => {
               </section>
 
               <section className="space-y-6">
-                <h2 className="font-headline font-bold text-2xl text-white uppercase tracking-wider flex items-center gap-3">
+                <h2 className="font-headline font-bold text-2xl text-white uppercase tracking-wider flex items-center gap-3 border-l-4 border-cyan-400 pl-4">
                   <span className="text-cyan-400 material-symbols-outlined">timeline</span>
                   Competition Structure
                 </h2>
                 
-                <div className="relative pl-6 border-l-2 border-zinc-800 space-y-8">
+                <div className="relative pl-6 border-l-2 border-zinc-800 space-y-8 ml-4">
                   <div className="relative">
-                    <span className="absolute -left-[35px] top-1 w-4 h-4 rounded-full bg-cyan-900 border-2 border-cyan-400"></span>
+                    <span className="absolute -left-[35px] top-1 w-4 h-4 rounded-full bg-cyan-900 border-2 border-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]"></span>
                     <h3 className="font-headline font-bold text-lg text-cyan-400 uppercase tracking-wide">Phase 1: Online Validation</h3>
                     <p className="text-zinc-400 text-sm mt-2 leading-relaxed">
                       Teams must submit a PPT/PDF presentation describing their proposed AI solution. Your blueprint should outline the Problem Statement, Technology Stack, and Expected Impact. Mentor evaluation will determine who proceeds.
@@ -187,7 +193,7 @@ export const ZonalDetails: FC = () => {
               </section>
 
               <section className="space-y-4">
-                <h2 className="font-headline font-bold text-2xl text-white uppercase tracking-wider flex items-center gap-3">
+                <h2 className="font-headline font-bold text-2xl text-white uppercase tracking-wider flex items-center gap-3 border-l-4 border-yellow-500 pl-4">
                   <span className="text-yellow-500 material-symbols-outlined">warning</span>
                   Strict Parameters
                 </h2>
@@ -198,9 +204,9 @@ export const ZonalDetails: FC = () => {
                     "Travel expenses to the zonal round are NOT reimbursed.",
                     "Valid college ID is strictly required during the in-person event."
                   ].map((rule, i) => (
-                    <li key={i} className="bg-surface-container-high border border-outline-variant/10 p-4 rounded-sm flex items-start gap-3">
+                    <li key={i} className="bg-surface-container-high border border-outline-variant/10 p-4 rounded-sm flex items-start gap-3 hover:border-yellow-500/50 transition-colors">
                       <span className="material-symbols-outlined text-yellow-500/70 text-[20px]">chevron_right</span>
-                      <span className="text-sm text-zinc-300 leading-snug">{rule}</span>
+                      <span className="text-sm text-zinc-300 leading-snug font-mono">{rule}</span>
                     </li>
                   ))}
                 </ul>
@@ -209,23 +215,27 @@ export const ZonalDetails: FC = () => {
 
             {/* Right Col - Stats & Targets */}
             <div className="space-y-6">
-              <div className="bg-surface-container border border-outline-variant/30 p-6 rounded-sm shadow-xl">
-                <h3 className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-6 border-b border-zinc-800 pb-2">Target Data</h3>
+              <div className="bg-surface-container border border-outline-variant/30 p-6 rounded-sm shadow-xl relative overflow-hidden group">
+                <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-cyan-500/5 blur-2xl group-hover:bg-cyan-500/10 transition-all rounded-full"></div>
+                <h3 className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-6 border-b border-zinc-800 pb-2 flex justify-between">
+                  <span>Target Data</span>
+                  <span className="text-cyan-500/50">SECURED_NODE</span>
+                </h3>
                 
                 <div className="space-y-6">
                   <div>
                     <p className="text-[10px] uppercase font-mono text-fuchsia-500 tracking-widest mb-1">Execution Date</p>
-                    <p className="font-headline font-bold text-xl text-white">{data.date}</p>
+                    <p className="font-headline font-bold text-xl text-white italic tracking-tighter">{data.date}</p>
                   </div>
                   <div>
                     <p className="text-[10px] uppercase font-mono text-cyan-400 tracking-widest mb-1">Registration Deadline</p>
-                    <p className="font-headline font-bold text-xl text-white">{data.deadline}</p>
+                    <p className="font-headline font-bold text-xl text-white italic tracking-tighter">{data.deadline}</p>
                   </div>
                   <div>
                     <p className="text-[10px] uppercase font-mono text-yellow-500 tracking-widest mb-1">Eligible Operatives</p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {["Engineering", "Management", "Undergrad", "Postgrad"].map(tag => (
-                        <span key={tag} className="px-2 py-1 bg-zinc-900 border border-zinc-700 rounded-sm text-[10px] font-mono text-zinc-300 uppercase">
+                        <span key={tag} className="px-2 py-1 bg-zinc-900 border border-zinc-700 rounded-sm text-[10px] font-mono text-zinc-300 uppercase tracking-tighter">
                           {tag}
                         </span>
                       ))}
@@ -234,11 +244,12 @@ export const ZonalDetails: FC = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-fuchsia-900/30 to-black border border-fuchsia-500/30 p-6 rounded-sm text-center">
-                <span className="material-symbols-outlined text-4xl text-fuchsia-400 mb-2">support_agent</span>
-                <h3 className="font-headline font-bold text-white mb-2">Need Assistance?</h3>
-                <p className="text-xs text-zinc-400 mb-4">Contact HackArena Command for logistics and deployment support.</p>
-                <a href="mailto:admin@igniteroom.in" className="inline-block px-4 py-2 border border-fuchsia-500/50 text-fuchsia-400 font-mono text-xs uppercase tracking-widest hover:bg-fuchsia-500 hover:text-white transition-colors rounded-sm">
+              <div className="bg-gradient-to-br from-fuchsia-900/30 to-black border border-fuchsia-500/30 p-8 rounded-sm text-center relative overflow-hidden group">
+                <img src={`${baseUrl}images/Trixy-Photoroom 1.png`} className="absolute -bottom-4 -left-4 w-16 opacity-10 group-hover:opacity-20 transition-all pointer-events-none" alt="Trixy" />
+                <span className="material-symbols-outlined text-4xl text-fuchsia-400 mb-2 drop-shadow-[0_0_8px_rgba(232,121,249,0.5)]">support_agent</span>
+                <h3 className="font-headline font-bold text-white mb-2 uppercase italic tracking-widest">Need Assistance?</h3>
+                <p className="text-xs text-zinc-400 mb-4 font-mono">Contact HackArena Command for logistics and deployment support.</p>
+                <a href="mailto:admin@igniteroom.in" className="inline-block px-4 py-2 border border-fuchsia-500/50 text-fuchsia-400 font-mono text-xs uppercase tracking-widest hover:bg-fuchsia-500 hover:text-white transition-all rounded-sm">
                   admin@igniteroom.in
                 </a>
               </div>

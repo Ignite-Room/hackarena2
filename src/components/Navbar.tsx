@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import type { FC } from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar: FC = () => {
   const [activeTab, setActiveTab] = useState("arena");
@@ -54,13 +55,13 @@ export const Navbar: FC = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-3 max-w-full bg-black/80 backdrop-blur-md border-b-2 border-fuchsia-500/50">
       <div className="flex items-center gap-2 flex-shrink-0">
-        <a href="https://igniteroom.in" target="_blank" rel="noopener noreferrer">
+        <Link to="/" className="flex items-center gap-3 group">
           <img
             alt="Ignite Room Logo"
             className="h-10 md:h-14 w-auto flex-shrink-0 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform"
             src={`${baseUrl}logo.png`}
           />
-        </a>
+        </Link>
       </div>
 
       <nav className="hidden md:flex items-center gap-10 relative h-full">
@@ -104,7 +105,7 @@ export const Navbar: FC = () => {
           <img 
             src={`${baseUrl}sponsors/unstop.png`} 
             alt="Unstop" 
-            className="w-10 h-10 md:w-14 md:h-10 object-contain border border-white/20 p-1.5 bg-white group-hover:bg-cyan-500/10 group-hover:border-cyan-400 transition-all rounded-sm filter drop-shadow-[0_0_5px_rgba(34,211,238,0.4)]"
+            className="w-10 h-10 md:w-14 md:h-10 object-contain border border-white/20 p-1.5 bg-transparent group-hover:bg-white group-hover:border-white transition-all rounded-sm filter drop-shadow-[0_0_5px_rgba(34,211,238,0.4)]"
           />
         </a>
       </div>
