@@ -62,8 +62,14 @@ const HomePage = () => (
 );
 
 function App() {
+  // Dynamic basename: Use /hackarena2.0 if the path starts with it (for production domain),
+  // otherwise use the root (for local dev and direct vercel.app links).
+  const basename = window.location.pathname.startsWith('/hackarena2.0') 
+    ? '/hackarena2.0' 
+    : '';
+
   return (
-    <BrowserRouter basename="/hackarena2.0">
+    <BrowserRouter basename={basename}>
       <Suspense fallback={<SectionLoader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
