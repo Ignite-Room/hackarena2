@@ -10,8 +10,8 @@ export const HeroSection: FC = () => {
     seconds: 0,
   });
 
-  // TARGET DATE: Final Grand Finale Hackathon (Estimated)
-  const targetDate = new Date("2025-06-30T09:00:00").getTime();
+  // TARGET DATE: Final Grand Finale Hackathon 2026
+  const targetDate = new Date("2026-06-30T09:00:00").getTime();
 
   useEffect(() => {
     const timer = setInterval(() => {
