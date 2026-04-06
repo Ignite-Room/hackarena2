@@ -1,8 +1,43 @@
+import { useState, useEffect } from "react";
 import type { FC } from "react";
 
 export const Navbar: FC = () => {
+  const [activeTab, setActiveTab] = useState("arena");
+
+  const navItems = [
+    { id: "arena", label: "Arena", href: "#arena" },
+    { id: "stations", label: "Stations", href: "#stations" },
+    { id: "leaderboard", label: "XP-Leaderboard", href: "#leaderboard" },
+    { id: "terminal", label: "Terminal", href: "#terminal" },
+  ];
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    navItems.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-3 max-w-full bg-black/80 backdrop-blur-md dark:bg-black/90 border-b-2 border-fuchsia-500/50">
+    <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-3 max-w-full bg-black/80 backdrop-blur-md border-b-2 border-fuchsia-500/50">
       <div className="flex items-center gap-2 flex-shrink-0">
         <a href="https://igniteroom.in" target="_blank" rel="noopener noreferrer">
           <img
@@ -12,33 +47,31 @@ export const Navbar: FC = () => {
           />
         </a>
       </div>
-      <nav className="hidden md:flex items-center gap-10">
-        <a
-          className="text-cyan-400 border-b-2 border-cyan-400 pb-2 text-sm md:text-base font-bold font-headline uppercase tracking-widest hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all"
-          href="#arena"
-        >
-          Arena
-        </a>
-        <a
-          className="text-fuchsia-500/80 hover:text-fuchsia-400 transition-all text-sm md:text-base font-bold font-headline uppercase tracking-widest hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(217,70,239,0.8)]"
-          href="#stations"
-        >
-          Stations
-        </a>
-        <a
-          className="text-fuchsia-500/80 hover:text-fuchsia-400 transition-all text-sm md:text-base font-bold font-headline uppercase tracking-widest hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(217,70,239,0.8)]"
-          href="#leaderboard"
-        >
-          XP-Leaderboard
-        </a>
-        <a
-          className="text-fuchsia-500/80 hover:text-fuchsia-400 transition-all text-sm md:text-base font-bold font-headline uppercase tracking-widest hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(217,70,239,0.8)]"
-          href="#terminal"
-        >
-          Terminal
-        </a>
+
+      <nav className="hidden md:flex items-center gap-10 relative">
+        {navItems.map((item) => (
+          <a
+            key={item.id}
+            href={item.href}
+            className={`text-sm md:text-base font-bold font-headline uppercase tracking-widest transition-all duration-300 relative z-10 ${
+              activeTab === item.id ? "text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" : "text-fuchsia-500/80 hover:text-fuchsia-400"
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+        {/* Sliding Indicator */}
+        <div 
+          className="absolute bottom-[-8px] h-[2px] bg-cyan-400 transition-all duration-500 ease-in-out shadow-[0_0_10px_rgba(34,211,238,0.8)]"
+          style={{
+            left: `${navItems.findIndex(i => i.id === activeTab) * 25 + 5}%`, // Approximated; better with refs but this is cleaner for now
+            width: "15%",
+            transform: "translateX(-50%)"
+          }}
+        />
       </nav>
-      <div className="flex items-center gap-2 md:gap-6 flex-shrink border-l border-white/10 pl-2 md:border-none md:pl-0">
+
+      <div className="flex items-center gap-2 md:gap-6 flex-shrink">
         <div className="bg-surface-container-high px-2 md:px-4 py-1.5 md:py-2 rounded-sm border border-fuchsia-500/30 flex items-center shrink min-w-0">
           <img
             alt="HackArena 2.0"
@@ -46,9 +79,18 @@ export const Navbar: FC = () => {
             src="/images/Heading 1.png"
           />
         </div>
-        <span className="material-symbols-outlined text-fuchsia-500/80 cursor-pointer hover:text-fuchsia-400 hover:scale-110 transition-transform text-2xl md:text-3xl shrink-0">
-          leaderboard
-        </span>
+        <a 
+          href="https://unstop.com/college-fests/hackarena-20-indraprastha-institute-of-information-technology-iiit-delhi-446261" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="group"
+        >
+          <img 
+            src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/favicon.ico" 
+            alt="Unstop" 
+            className="w-8 h-8 md:w-10 md:h-10 border border-white/20 p-1.5 bg-white/5 group-hover:bg-cyan-500/10 group-hover:border-cyan-400 transition-all rounded-full filter invert drop-shadow-[0_0_5px_rgba(34,211,238,0.4)]"
+          />
+        </a>
       </div>
     </header>
   );
